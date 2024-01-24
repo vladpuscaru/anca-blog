@@ -1,0 +1,18 @@
+{
+	"header": {
+		"menu": {
+			"about": "despre",
+			"posts": "postari",
+			"travel": "travel",
+			"inner": "inner",
+			"outer": "outer",
+			"contact": "contact"
+		}
+	},
+	"homePage": {
+		"bannerHero": {
+			"title": "Tot ce am de spus",
+			"subtitle": "despre viata si alte povesti"
+		}
+	}
+}

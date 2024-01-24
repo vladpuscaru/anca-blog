@@ -3,7 +3,9 @@ import styles from "./Footer.module.sass";
 const Footer = () => {
     return (
         <footer>
-            Footer
+            <div className={"container"}>
+                Footer
+            </div>
         </footer>
     )
 }

@@ -1,0 +1,35 @@
+@import "./fonts"
+@import "./variables"
+
+*, *:after, *:before
+  box-sizing: border-box
+  padding: 0
+  margin: 0
+  font-family: $fontMain
+  font-size: 16px
+  line-height: 16px
+
+img
+  max-width: 100%
+  height: auto
+
+a
+  text-decoration: none
+  color: inherit
+
+.container
+  position: relative
+  height: 100%
+  width: 100%
+  margin: 0 auto
+  padding: 0px 15px
+  overflow: hidden
+  @media (min-width: 768px)
+    width: 750px
+  @media (min-width: 992px)
+    width: 970px
+    flex-direction: row
+  @media (min-width: 1200px)
+    width: 1150px
+  @media (min-width: 1400px)
+    width: 1260px

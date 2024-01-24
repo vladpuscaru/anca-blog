@@ -1,0 +1,26 @@
+@import "../../common/sass/variables"
+
+.menu
+  display: flex
+  justify-content: center
+  align-items: center
+  background-color: $white
+  padding: 20px 0
+
+  ul
+    list-style: none
+    display: flex
+
+  li
+    text-transform: uppercase
+
+    &:not(:last-of-type)
+      margin-right: 30px
+
+    &.active
+      color: red
+
+    a
+      font-size: 24px
+
+

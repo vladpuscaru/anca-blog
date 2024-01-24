@@ -1,0 +1,18 @@
+{
+	"header": {
+		"menu": {
+			"about": "about",
+			"posts": "posts",
+			"travel": "travel",
+			"inner": "inner",
+			"outer": "outer",
+			"contact": "contact"
+		}
+	},
+	"homePage": {
+		"bannerHero": {
+			"title": "Everything I have to say",
+			"subtitle": "life and other stories"
+		}
+	}
+}
