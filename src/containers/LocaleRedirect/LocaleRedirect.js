@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation, Navigate, useNavigate } from "react-router-dom";
 import { languages } from "../../i18n/languages";
+import { FALLBACK_LOCALE } from "../../i18n";
 
 const LocaleRedirect = ({children}) => {
     const navigate = useNavigate();
@@ -20,7 +21,7 @@ const LocaleRedirect = ({children}) => {
         || Object.keys(languages).indexOf(language) === -1
 
     return redirectToEn ?
-        <Navigate to={`/en/${pathWithoutLanguage}`}/>
+        <Navigate to={`/${FALLBACK_LOCALE}/${pathWithoutLanguage}`}/>
         :
         React.cloneElement(children, {
                 locale: language,
