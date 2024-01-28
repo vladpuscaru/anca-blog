@@ -1,7 +1,7 @@
 import styles from "./PageHome.module.sass";
 import BannerHero from "../../components/BannerHero/BannerHero";
 import { getString } from "../../i18n";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Banner from "../../components/Banner/Banner";
 import PostsFeed from "../../components/PostsFeed/PostsFeed";
 import { useEffect, useState } from "react";
@@ -11,6 +11,7 @@ import Button from "../../components/Button/Button";
 import ContactForm from "../../components/ContactForm/ContactForm";
 
 const PageHome = () => {
+    const navigate = useNavigate();
     const [posts, setPosts] = useState({
         data: [],
         err: null,
@@ -35,7 +36,7 @@ const PageHome = () => {
 
 
     const onLatestBtnClick = () => {
-
+        navigate(`/${locale}/posts`);
     }
 
     return (
@@ -70,7 +71,7 @@ const PageHome = () => {
                                     visible={true}
                                 />
                                 :
-                                <PostsFeed posts={posts.data}/>
+                                <PostsFeed posts={posts.data} locale={locale}/>
                         }
                     </div>
                     <Button text={getString(locale, "homePage.latest.button")} onClick={onLatestBtnClick}/>

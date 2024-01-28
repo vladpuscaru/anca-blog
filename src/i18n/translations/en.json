@@ -35,6 +35,9 @@
 			"title": "GET IN TOUCH"
 		}
 	},
+	"postsPage": {
+		"loadMorePosts": "Load More"
+	},
 	"contactForm": {
 		"name": "NAME",
 		"email": "EMAIL",

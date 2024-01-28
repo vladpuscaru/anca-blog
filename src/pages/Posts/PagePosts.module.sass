@@ -1,0 +1,41 @@
+@import "../../common/sass/variables"
+
+.posts
+  padding: 55px 0
+  background-color: $gray
+
+  .content
+    margin: 55px 0
+
+  .filters
+    .query
+      display: flex
+      justify-content: space-between
+      align-items: center
+      padding: 5px 0
+      border-bottom: 1px solid $black
+      input
+        background-color: $gray
+        border: none
+        font-size: 35px
+        line-height: 35px
+        &:focus
+          outline: none
+
+    .categories
+      display: flex
+      margin-top: 15px
+
+      .category
+        margin: 5px
+        background-color: $white
+        border-radius: 5px
+        padding: 10px 15px
+
+        &:hover
+          cursor: pointer
+          background-color: rgba($black, .5)
+
+        &.active
+          background-color: $black
+          color: $white

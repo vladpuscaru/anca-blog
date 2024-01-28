@@ -3,6 +3,7 @@ import axios from "axios";
 const BLOG_BASE_URL = "https://www.googleapis.com/blogger/v3"
 const BLOG_ID = "3982832264187954572"
 const BLOG_API_KEY = "AIzaSyAHvgHLly9AYOBvYpj6AfZ526kpvMgWT5o"
+const BLOG_CATEGORIES_PAGE_ID = "1341748293566205615"
 
 const pattern_LOCALE = "locale_";
 const pattern_CATEGORY = "category_";
@@ -105,11 +106,13 @@ const parsePost = (bloggerPostData) => {
     }
 }
 
-export const getPosts = async () => {
+export const getPosts = async (query, categories, pageToken) => {
     try {
         const {data} = await client.get(`/blogs/${BLOG_ID}/posts?key=${BLOG_API_KEY}`);
+        console.log(data);
         return {
             data: data.items.map(parsePost),
+            nextPageToken: data.nextPageToken,
             err: null
         };
     } catch (err) {
@@ -121,3 +124,18 @@ export const getPosts = async () => {
     }
 }
 
+export const getAllCategories = async () => {
+    try {
+        const {data} = await client.get(`/blogs/${BLOG_ID}/pages/${BLOG_CATEGORIES_PAGE_ID}?key=${BLOG_API_KEY}`);
+        return {
+            data: data.content.split("\n"),
+            err: null
+        };
+    } catch (err) {
+        console.log(err);
+        return {
+            err,
+            data: null
+        }
+    }
+}
