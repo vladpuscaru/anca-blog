@@ -19,11 +19,7 @@ const PagePosts = ({categories = []}) => {
             err: null,
             loading: true
         },
-        categories,
-        filters: {
-            query: "",
-            categories: []
-        },
+        categories
     });
 
     const loadPosts = async () => {
@@ -32,7 +28,7 @@ const PagePosts = ({categories = []}) => {
                 data,
                 nextPageToken,
                 err
-            } = await getPosts(postsData.filters.query, postsData.filters.categories, postsData.posts.nextPage);
+            } = await getPosts(postsData.posts.nextPage);
             setPostsData({
                 ...postsData,
                 posts: {
@@ -43,7 +39,7 @@ const PagePosts = ({categories = []}) => {
                 }
             });
         } else {
-            const {data, nextPageToken, err} = await getPosts(postsData.filters.query, postsData.filters.categories);
+            const {data, nextPageToken, err} = await getPosts();
             setPostsData({
                 ...postsData,
                 posts: {
@@ -57,31 +53,25 @@ const PagePosts = ({categories = []}) => {
     }
 
     const onChange = (e) => {
-        setPostsData({
-            ...postsData,
-            filters: {
-                ...postsData.filters,
-                [e.target.name]: e.target.value
-            }
-        });
+        const {name, value} = e.target;
+        setSearchParams({
+            categories: searchParams.get("categories"),
+            [name]: value}
+        );
     }
 
     const onCategoryClick = (category) => {
+        const categories = getFiltersFromSearch().categories || [];
+
         if (!isActive(category)) {
-            setPostsData({
-                ...postsData,
-                filters: {
-                    ...postsData.filters,
-                    categories: [...postsData.filters.categories, category]
-                }
+            setSearchParams({
+                query: searchParams.get("query"),
+                categories: [...categories, category].join(",")
             });
         } else {
-            setPostsData({
-                ...postsData,
-                filters: {
-                    ...postsData.filters,
-                    categories: postsData.filters.categories.filter(cat => cat !== category)
-                }
+            setSearchParams({
+                query: searchParams.get("query"),
+                categories: categories.filter(c => c !== category).join(",")
             });
         }
     }
@@ -91,72 +81,29 @@ const PagePosts = ({categories = []}) => {
     }
 
     const isActive = (category) => {
-        return postsData.filters.categories.includes(category);
+        return getFiltersFromSearch().categories?.includes(category);
     }
 
-    const arraysAreEqual = (arr1, arr2) => {
-        if ((!arr1 && arr2) || (arr1 && !arr2)) {
-            return false;
-        }
+    const getFiltersFromSearch = () => {
+        const categories = searchParams.get("categories")?.split(",");
+        const query = searchParams.get("query");
 
-        if (arr1.length !== arr2.length) {
-            return false;
-        }
-
-        for (let i = 0; i < arr1.length; i++) {
-            if (arr1[i] !== arr2[i]) {
-                return false;
-            }
-        }
-
-        return true;
+        return {categories, query};
     }
 
-    const getFiltersFromSearch = (search) => {
-        const params = search.substring(1).split("&");
-        let categories = params.filter(p => p.startsWith("categories"))[0];
-        if (categories) {
-            categories = categories.split("=")[1].split(",");
-        }
-
-        let query = params.filter(p => p.startsWith("query"))[0];
-        if (query) {
-            query = query.split("=")[1];
-        }
-
-        return { categories, query };
-    }
-
-    const searchIsState = (search) => {
-        const filtersFromSearch = getFiltersFromSearch(search);
-        return arraysAreEqual(postsData.filters.categories, filtersFromSearch.categories) && postsData.filters.query === filtersFromSearch.query;
-    }
-
-
-    const {pathname, search} = useLocation();
+    const {pathname} = useLocation();
     const locale = pathname.split("/")[1];
 
     useEffect(() => {
-        // if (!search || (search && searchIsState(search))) {
-        //     loadPosts();
-        // } else {
-        //     setPostsData({
-        //         ...postsData,
-        //         filters: {
-        //             ...postsData.filters,
-        //             categories: ["Travel"]
-        //         }
-        //     })
-        // }
         loadPosts();
-    }, [postsData.filters]);
+    }, [searchParams]);
 
     return (
         <div className={styles.posts}>
             <div className="container">
                 <div className={styles.filters}>
                     <div className={styles.query}>
-                        <input type="text" name="query" value={postsData.filters.query} onChange={onChange}/>
+                        <input type="text" name="query" onChange={onChange}/>
                         <ReactSVG src={icSearch}/>
                     </div>
                     <div className={styles.categories}>
