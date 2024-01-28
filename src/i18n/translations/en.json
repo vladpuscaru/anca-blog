@@ -9,10 +9,39 @@
 			"contact": "contact"
 		}
 	},
+	"footer": {
+		"social": {
+			"title": "Find me on Social Media"
+		},
+		"newsletter": {
+			"title": "Newsletter",
+			"subtitle": "Subscribe to my newsletter full of inspiring stories about my journey that continues"
+		}
+	},
 	"homePage": {
 		"bannerHero": {
 			"title": "Everything I have to say",
 			"subtitle": "life and other stories"
+		},
+		"about": {
+			"title": "ABOUT",
+			"description": "It’s Anca Mierloiu and here are some of my experiences, \nthoughts, ideas, and feelings that I find valuable to be shared \u0003to my external universe as well.<br/><br/>Enjoy!"
+		},
+		"latest": {
+			"title": "Latest Posts",
+			"button": "See All Posts"
+		},
+		"contact": {
+			"title": "GET IN TOUCH"
 		}
+	},
+	"contactForm": {
+		"name": "NAME",
+		"email": "EMAIL",
+		"message": "MESSAGE",
+		"btnSubmit": "SEND"
+	},
+	"newsletter": {
+		"btnSubmit": "SEND"
 	}
 }

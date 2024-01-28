@@ -9,10 +9,39 @@
 			"contact": "contact"
 		}
 	},
+	"footer": {
+		"social": {
+			"title": "Find me on Social Media"
+		},
+		"newsletter": {
+			"title": "Newsletter",
+			"subtitle": "Subscribe to my newsletter full of inspiring stories about my journey that continues"
+		}
+	},
 	"homePage": {
 		"bannerHero": {
 			"title": "Tot ce am de spus",
 			"subtitle": "despre viata si alte povesti"
+		},
+		"about": {
+			"title": "DESPRE",
+			"description": "It’s Anca Mierloiu and here are some of my experiences, \nthoughts, ideas, and feelings that I find valuable to be shared \u0003to my external universe as well.\n\nEnjoy!"
+		},
+		"latest": {
+			"title": "Latest Posts",
+			"button": "Vezi toate postarile"
+		},
+		"contact": {
+			"title": "GET IN TOUCH"
 		}
+	},
+	"contactForm": {
+		"name": "Nume",
+		"email": "Email",
+		"message": "Mesaj",
+		"btnSubmit": "Trimite"
+	},
+	"newsletter": {
+		"btnSubmit": "SEND"
 	}
 }

@@ -9,7 +9,6 @@ const Header = ({locale, changeLocale}) => {
     return (
         <header>
             <div className={"container"}>
-                <p onClick={() => changeLocale('ro')}>LOREM</p>
                 <Logo/>
                 <Menu
                     locale={locale}

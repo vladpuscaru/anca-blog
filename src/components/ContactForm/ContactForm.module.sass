@@ -1,0 +1,41 @@
+@import "../../common/sass/variables"
+
+.contactForm
+  display: inline-block
+  font-size: 18px
+  line-height: 18px
+  width: 700px
+
+  .section
+    display: flex
+    flex-direction: column
+    text-align: left
+    margin-bottom: 35px
+
+    label
+      font-size: 24px
+      line-height: 24px
+      margin-bottom: 15px
+
+    input, textarea
+      border: .5px solid $black
+      padding: 25px
+      resize: none
+
+      &:focus
+        outline: none
+
+  input[type="submit"]
+    border: 1px solid $black
+    background-color: $black
+    color: $white
+    width: 100%
+    padding: 15px 0
+    font-size: 24px
+    line-height: 24px
+    font-weight: normal
+
+    &:hover
+      cursor: pointer
+      color: $black
+      background-color: $white
