@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { post } from "axios";
 
 const BLOG_BASE_URL = "https://www.googleapis.com/blogger/v3"
 const BLOG_ID = "3982832264187954572"
@@ -106,12 +106,14 @@ const parsePost = (bloggerPostData) => {
     }
 }
 
-export const getPost = async (postId) => {
+export const getPost = async (locale, postId) => {
+    if (!postId) return;
+    if (!locale) locale = 'en';
+
     try {
-        const {data} = await client.get(`/blogs/${BLOG_ID}/posts/${postId}?key=${BLOG_API_KEY}`);
-        console.log(data);
+        const {data} = await client.get(`/blogs/${BLOG_ID}/posts/search?q=label:${pattern_LOCALE}${locale}+label:${pattern_ID}${postId}&key=${BLOG_API_KEY}`);
         return {
-            data: parsePost(data),
+            data: data.items ? parsePost(data.items[0]) : {},
             nextPageToken: data.nextPageToken,
             err: null
         };
@@ -145,8 +147,6 @@ export const getPosts = async (locale, query, categories, pageToken) => {
     if (pageToken) {
         path = pageToken;
     }
-
-    console.log(path);
 
     try {
         const {data} = await client.get(path);

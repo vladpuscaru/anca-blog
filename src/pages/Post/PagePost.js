@@ -23,7 +23,7 @@ const PagePost = () => {
     useEffect(() => {
         const getPostData = async () => {
             const id = pathname.split("/")[pathname.split("/").length - 1];
-            const {data, err} = await getPost(id);
+            const {data, err} = await getPost(locale, id);
 
             setPostData({
                 post: data,
@@ -64,7 +64,7 @@ const PagePost = () => {
                 <div className={styles.related}>
                     <div className="container">
                         <h1>{getString(locale, "singlePostPage.related.title")}</h1>
-                        <PostsFeed posts={[]}/>
+                        <PostsFeed locale={locale} posts={[]}/>
                     </div>
                 </div>
             </div>

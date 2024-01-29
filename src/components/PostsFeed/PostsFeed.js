@@ -16,7 +16,7 @@ const PostsFeed = ({posts, locale}) => {
                 posts && posts.length > 0 ?
                 posts.map((post, idx) => (
                     <div key={idx} className={styles.postContainer}>
-                        <PostCard postData={post} onClick={() => onPostClick(post.bloggerId)}/>
+                        <PostCard postData={post} onClick={() => onPostClick(post.id)}/>
                     </div>
                 ))
                     :
