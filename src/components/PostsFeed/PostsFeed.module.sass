@@ -1,8 +1,16 @@
 .postsfeed
   display: flex
   flex-wrap: wrap
-  justify-content: space-between
+  justify-content: center
+  @media (min-width: 992px)
+    justify-content: space-between
+
 
   .postContainer
-    min-width: 25%
+    width: 100%
     height: 100%
+    margin: 10px 0
+    @media (min-width: 992px)
+      width: 48.5%
+    @media (min-width: 1200px)
+      width: 24.5%
