@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.7d6f72e4.css",
-    "main.js": "/static/js/main.2377f264.js",
-    "static/js/787.94be3bcc.chunk.js": "/static/js/787.94be3bcc.chunk.js",
-    "static/media/PTSerif-Caption.woff2": "/static/media/PTSerif-Caption.c3cae7ca2ac8064ce7a1.woff2",
-    "static/media/TafelschriftV2.woff2": "/static/media/TafelschriftV2.cc6b992ff3f71c86a47c.woff2",
-    "static/media/ic_twitter.svg": "/static/media/ic_twitter.c759977ca496dcf52ec2c8797a411d1a.svg",
-    "index.html": "/index.html",
-    "static/media/ic_instagram.svg": "/static/media/ic_instagram.97209d5c4040b71ea805a5a9e587abcd.svg",
-    "static/media/ic_search.svg": "/static/media/ic_search.1968d156e100beb4e474b7e7caad901b.svg",
-    "static/media/ic_facebook.svg": "/static/media/ic_facebook.9c77ac2740446eb282dfd7b913e45119.svg",
-    "main.7d6f72e4.css.map": "/static/css/main.7d6f72e4.css.map",
-    "main.2377f264.js.map": "/static/js/main.2377f264.js.map",
-    "787.94be3bcc.chunk.js.map": "/static/js/787.94be3bcc.chunk.js.map"
+    "main.css": "/anca-blog/static/css/main.b4bdfe1e.css",
+    "main.js": "/anca-blog/static/js/main.fee0d7fb.js",
+    "static/js/787.94be3bcc.chunk.js": "/anca-blog/static/js/787.94be3bcc.chunk.js",
+    "static/media/PTSerif-Caption.woff2": "/anca-blog/static/media/PTSerif-Caption.c3cae7ca2ac8064ce7a1.woff2",
+    "static/media/TafelschriftV2.woff2": "/anca-blog/static/media/TafelschriftV2.cc6b992ff3f71c86a47c.woff2",
+    "static/media/ic_twitter.svg": "/anca-blog/static/media/ic_twitter.c759977ca496dcf52ec2c8797a411d1a.svg",
+    "index.html": "/anca-blog/index.html",
+    "static/media/ic_instagram.svg": "/anca-blog/static/media/ic_instagram.97209d5c4040b71ea805a5a9e587abcd.svg",
+    "static/media/ic_search.svg": "/anca-blog/static/media/ic_search.1968d156e100beb4e474b7e7caad901b.svg",
+    "static/media/ic_facebook.svg": "/anca-blog/static/media/ic_facebook.9c77ac2740446eb282dfd7b913e45119.svg",
+    "main.b4bdfe1e.css.map": "/anca-blog/static/css/main.b4bdfe1e.css.map",
+    "main.fee0d7fb.js.map": "/anca-blog/static/js/main.fee0d7fb.js.map",
+    "787.94be3bcc.chunk.js.map": "/anca-blog/static/js/787.94be3bcc.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7d6f72e4.css",
-    "static/js/main.2377f264.js"
+    "static/css/main.b4bdfe1e.css",
+    "static/js/main.fee0d7fb.js"
   ]
 }
