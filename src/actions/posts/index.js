@@ -106,27 +106,52 @@ const parsePost = (bloggerPostData) => {
     }
 }
 
-export const getPost = async (postId) => {    try {
-    const {data} = await client.get(`/blogs/${BLOG_ID}/posts/${postId}?key=${BLOG_API_KEY}`);
-    console.log(data);
-    return {
-        data: parsePost(data),
-        nextPageToken: data.nextPageToken,
-        err: null
-    };
-} catch (err) {
-    console.log(err);
-    return {
-        err,
-        data: null
+export const getPost = async (postId) => {
+    try {
+        const {data} = await client.get(`/blogs/${BLOG_ID}/posts/${postId}?key=${BLOG_API_KEY}`);
+        console.log(data);
+        return {
+            data: parsePost(data),
+            nextPageToken: data.nextPageToken,
+            err: null
+        };
+    } catch (err) {
+        console.log(err);
+        return {
+            err,
+            data: null
+        }
     }
 }
-}
-export const getPosts = async (query, categories, pageToken) => {
+export const getPosts = async (locale, query, categories, pageToken) => {
+    if (!locale) locale = 'en';
+
+    let queryParams = `?q=label:${pattern_LOCALE}${locale}`;
+
+    if (query) {
+        queryParams += `+${query}`;
+    }
+
+    console.log(categories);
+
+    if (categories) {
+        queryParams += `+${categories.map(c => `label:${pattern_CATEGORY}${c.toLowerCase()}`)}`
+    }
+
+    queryParams += `&key=${BLOG_API_KEY}`;
+
+    let path = `/blogs/${BLOG_ID}/posts/search${queryParams}`;
+
+    if (pageToken) {
+        path = pageToken;
+    }
+
+    console.log(path);
+
     try {
-        const {data} = await client.get(`/blogs/${BLOG_ID}/posts?key=${BLOG_API_KEY}`);
+        const {data} = await client.get(path);
         return {
-            data: data.items.map(parsePost),
+            data: data.items ? data.items.map(parsePost) : [],
             nextPageToken: data.nextPageToken,
             err: null
         };

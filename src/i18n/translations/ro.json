@@ -51,5 +51,10 @@
 	},
 	"newsletter": {
 		"btnSubmit": "SEND"
+	},
+	"postsFeed": {
+		"noPosts": {
+			"title": "No posts match your criteria."
+		}
 	}
 }

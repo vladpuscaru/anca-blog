@@ -23,56 +23,62 @@ const PagePosts = ({categories = []}) => {
     });
 
     const loadPosts = async () => {
-        if (postsData.posts.nextPage) {
-            const {
+        setPostsData({
+            ...postsData,
+            posts: {
+                loading: true
+            }
+        });
+
+        const {query, categories} = getFiltersFromSearch();
+
+        const {
+            data,
+            nextPageToken,
+            err
+        } = await getPosts(locale, query, categories, postsData.posts.nextPage);
+        setPostsData({
+            ...postsData,
+            posts: {
                 data,
-                nextPageToken,
-                err
-            } = await getPosts(postsData.posts.nextPage);
-            setPostsData({
-                ...postsData,
-                posts: {
-                    data,
-                    nextPage: nextPageToken,
-                    err,
-                    loading: false
-                }
-            });
-        } else {
-            const {data, nextPageToken, err} = await getPosts();
-            setPostsData({
-                ...postsData,
-                posts: {
-                    data,
-                    nextPage: nextPageToken,
-                    err,
-                    loading: false
-                }
-            });
-        }
+                nextPage: nextPageToken,
+                err,
+                loading: false
+            }
+        });
     }
 
     const onChange = (e) => {
-        const {name, value} = e.target;
-        setSearchParams({
-            categories: searchParams.get("categories"),
-            [name]: value}
-        );
+        const {value} = e.target;
+
+        const params = {
+            query: value,
+            categories: searchParams.get("categories")
+        };
+        if (!params.query) delete params.query;
+        if (!params.categories || params.categories.length === 0) delete params.categories;
+        setSearchParams(params);
     }
 
     const onCategoryClick = (category) => {
         const categories = getFiltersFromSearch().categories || [];
 
         if (!isActive(category)) {
-            setSearchParams({
+            const params = {
                 query: searchParams.get("query"),
                 categories: [...categories, category].join(",")
-            });
+            };
+            if (!params.query) delete params.query;
+            if (!params.categories || params.categories.length === 0) delete params.categories;
+            setSearchParams(params);
         } else {
-            setSearchParams({
+            const params = {
                 query: searchParams.get("query"),
                 categories: categories.filter(c => c !== category).join(",")
-            });
+            };
+            if (!params.query) delete params.query;
+            if (!params.categories || params.categories.length === 0) delete params.categories;
+            setSearchParams(params);
         }
     }
 
