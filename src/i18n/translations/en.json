@@ -38,6 +38,11 @@
 	"postsPage": {
 		"loadMorePosts": "Load More"
 	},
+	"singlePostPage": {
+		"related": {
+			"title": "Latest in Category"
+		}
+	},
 	"contactForm": {
 		"name": "NAME",
 		"email": "EMAIL",

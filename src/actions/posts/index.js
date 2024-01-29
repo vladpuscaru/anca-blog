@@ -38,7 +38,7 @@ const parseTime = (time) => {
     const month = MONTHS[time.substring(5, 7)];
     const day = time.substring(8, 10);
 
-    return `${month} ${day} / ${year}`;
+    return `${month} ${day}, ${year}`;
 }
 
 const parsePost = (bloggerPostData) => {
@@ -106,10 +106,25 @@ const parsePost = (bloggerPostData) => {
     }
 }
 
+export const getPost = async (postId) => {    try {
+    const {data} = await client.get(`/blogs/${BLOG_ID}/posts/${postId}?key=${BLOG_API_KEY}`);
+    console.log(data);
+    return {
+        data: parsePost(data),
+        nextPageToken: data.nextPageToken,
+        err: null
+    };
+} catch (err) {
+    console.log(err);
+    return {
+        err,
+        data: null
+    }
+}
+}
 export const getPosts = async (query, categories, pageToken) => {
     try {
         const {data} = await client.get(`/blogs/${BLOG_ID}/posts?key=${BLOG_API_KEY}`);
-        console.log(data);
         return {
             data: data.items.map(parsePost),
             nextPageToken: data.nextPageToken,

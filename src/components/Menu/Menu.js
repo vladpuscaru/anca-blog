@@ -16,18 +16,18 @@ const Menu = ({locale, onLocaleChange, activePath, activeHash}) => {
                         { getString(locale, 'header.menu.posts') }
                     </Link>
                 </li>
-                <li className={activePath === "/posts?category=travel" ? styles.active : ""}>
-                    <Link to={`${locale}/posts?category=travel`}>
+                <li className={activePath === "/posts?categories=Travel" ? styles.active : ""}>
+                    <Link to={`${locale}/posts?categories=Travel`}>
                         { getString('en', 'header.menu.travel') }
                     </Link>
                 </li>
-                <li className={activePath === "/posts?category=inner" ? styles.active : ""}>
-                    <Link to={`${locale}/posts?category=inner`}>
+                <li className={activePath === "/posts?categories=Inner" ? styles.active : ""}>
+                    <Link to={`${locale}/posts?categories=Inner`}>
                         { getString(locale, 'header.menu.inner') }
                     </Link>
                 </li>
-                <li className={activePath === "/posts?category=outer" ? styles.active : ""}>
-                    <Link to={`${locale}/posts?category=outer`}>
+                <li className={activePath === "/posts?categories=Outer" ? styles.active : ""}>
+                    <Link to={`${locale}/posts?categories=Outer`}>
                         { getString(locale, 'header.menu.outer') }
                     </Link>
                 </li>
